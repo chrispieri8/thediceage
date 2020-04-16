@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="grid-layout">
-    <!-- <side-nav class="side-nav"></side-nav> -->
+
     <main-header class="header" />
 
     <div class="main-content">
@@ -8,11 +8,12 @@
     </div>
 
     <main-footer class="footer"></main-footer>
+
+    <div class="background"></div>
   </div>
 </template>
 
 <script>
-// import SideNav from './components/SideNav.vue';
 import MainHeader from './components/MainHeader.vue';
 import MainFooter from './components/MainFooter.vue';
 
@@ -26,12 +27,6 @@ export default {
 </script>
 
 <style scoped>
-  /* .side-nav {
-    grid-column: 1 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-  } */
-
   /* .header, .main-content, .footer {
     padding: 20px;
   } */
@@ -75,8 +70,43 @@ export default {
   /* --primary-color : #3f72af; */
   --light-primary-color : #f9f7f7;
   --grey-color : hsla(94, 3%, 69%, 1);
+  --blue : #2AC1E1;
+
+  --primary-1: #F7FBF5;
+  --primary-2: #D8F6D9;
+  --primary-3: #B8F6A9;
+  --primary-4: #9BEB83;
+  --primary-5: #63D768; /* main */
+  --primary-6: #2EC740;
+  --primary-7: #1DB954;
+  --primary-8: #1C6E39;
+  --primary-9: #18322C;
+  --primary-10: #0E1D1A;
+
+
+  --secondary-1: #84ECF8;
+  --secondary-2: #4BDEF5;
+  --secondary-3: #2AC1E1; /* main */
+  --secondary-4: #439FB4;
+  --secondary-5: #015978;
+  --secondary-6: #003957;
+
+  --accent-1: #FCBFCD;
+  --accent-2: #F68C96;
+  --accent-3: #ED5846;
+  --accent-4: #AC3E38;
+
+  --grey-1: #F7FAFC;
+  --grey-2: #EDF2F7;
+  --grey-3: #E2E8F0;
+  --grey-4: #CBD5E0;
+  --grey-5: #A0AEC0;
+  --grey-6: #718096;
+  --grey-7: #4A5568;
+  --grey-8: #2D3748;
+  --grey-9: #1A202C;
+
   /* --secondary-color : #2c3e50; */
-   --secondary-color : #282828;
   --max-page-width : 1080px;
 }
 
@@ -116,7 +146,35 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: var(--secondary-color);
-  background-color: var(--light-primary-color);
+  color: var(--grey-9);
+  /* background-color: var(--light-primary-color); */
+  position: relative;
 }
+
+.background {
+  position: absolute;
+  z-index: -99;
+  opacity: .8;
+  top: 0;
+  left: 0;
+  height: 286px;
+  width: 100%;
+  background-image: url('./assets/bg_row_1.svg'),
+                    url('./assets/bg_row_2.svg'),
+                    url('./assets/bg_row_3.svg'),
+                    url('./assets/grid.svg');
+  background-size: 300px 300px,
+                    300px 300px,
+                    300px 300px,
+                    102px 90px;
+  background-position: 0 -100px,
+                        60px -5px,
+                        0 85px,
+                        0 0;
+  background-repeat: repeat-x,
+                      repeat-x,
+                      repeat-x,
+                      repeat;
+  }
+
 </style>

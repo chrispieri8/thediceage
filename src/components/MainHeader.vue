@@ -1,17 +1,17 @@
 <template>
     <div>
-    <div class="main">
-        <div>
-            <router-link to="/" style="display : flex">
-                <img class="logo" alt="Dice Age Logo" src="../assets/logo.svg" >
-                <img class="logo_title" alt="Dice Age Title" src="../assets/logo_title.svg" >
-            </router-link>
-        </div>
-        <div>
-            <router-link class="link" to="/about"><h4>About</h4></router-link>
-        </div>
+        <div class="main">
+            <div>
+                <router-link to="/" style="display : flex">
+                    <img class="logo" alt="Dice Age Logo" src="../assets/logo.svg" >
+                    <img class="logo_title" alt="Dice Age Title" src="../assets/logo_title.svg" >
+                </router-link>
+            </div>
+            <div>
+                <router-link class="link" to="/about"><h4>About</h4></router-link>
+            </div>
 
-    </div>
+        </div>
     </div>
 </template>
 
@@ -58,7 +58,7 @@ export default {
 }
 
 .link.router-link-exact-active {
-  color: var(--dark-primary-color)
+  color: var(--primary-5);
 }
 
 </style>

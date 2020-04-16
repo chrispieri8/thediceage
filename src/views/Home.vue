@@ -3,6 +3,7 @@
 
     <div class="prefrences">
       <input class="search" type="text" placeholder="e.g. Hero Realms" v-model="search">
+      <!-- <div class="search"></div> -->
       <div class="category-tags">
         <template v-for="(tag, index) in tags">
           <CategoryTag :title='tag' v-on:tagSelected="tagSelected" :key="index" />
@@ -71,8 +72,9 @@ export default {
 }
 
 .search {
-  color: var(--secondary-color);
-  padding: 5px 15px;
+  position: relative;
+  color: var(--grey-8);
+  padding: 8px 20px;
   font-family: 'Raleway', sans-serif;
   font-size: 1em;
   width: 50%;
@@ -80,12 +82,27 @@ export default {
   text-decoration: none;
   outline: none;
   transition: outline .2s ease-out;
-  /* border: 1px solid; */
-  /* border-radius: 8px; */
+
+  border: double 4px transparent;
+  border-radius: 18px;
+  background-image: linear-gradient(white, white),
+                    linear-gradient(60deg,
+                    var(--primary-4), var(--primary-5), var(--primary-6),
+                    var(--secondary-2), var(--secondary-3), var(--secondary-4));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: 200% 200%;
 }
 
 .search:hover, .search:active, .search:focus {
-  outline: 7px solid rgba(169, 227, 125, .4);
+  /* outline: 7px solid rgba(169, 227, 125, .4); */
+  animation: animatedGradient 2s alternate ease infinite;
+}
+
+@keyframes animatedGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 .posts-container {
@@ -100,6 +117,12 @@ export default {
   transition: all .4s ease-in-out;
   /* min-width: 469px; */
   /* flex-grow: 1; */
+}
+
+@media only screen and (min-width: 950px) {
+  .posts {
+    max-width: 520px;
+  }
 }
 
 @media only screen and (max-width: 950px) {

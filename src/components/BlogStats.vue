@@ -16,12 +16,18 @@
         </div>
         <div class="stat-row">
             <img class="stat-icon" alt="People" src="@/assets/meeple.svg" >
-            <div class="stat-info">3 <span class="stat-unit">-</span> 4</div>
+            <div class="stat-info">3 <span class="stat-unit">-</span> 4 <span class="stat-unit">players</span> </div>
         </div>
-        <div class="stat-row">
+
+        <!-- <div class="stat-row">
             <img class="stat-icon" alt="Coin" src="@/assets/coin.svg" >
             <div class="stat-info">$19.99</div>
-        </div>
+        </div> -->
+
+        <iframe
+            style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
+            :src="amazon_src">
+        </iframe>
     </div>
 
 </template>
@@ -29,10 +35,13 @@
 <script>
 export default {
     name: 'BlogStats',
-    props: ['rating'],
+    props: ['rating', 'amazon'],
     computed: {
         stats() {
             return this.rating;
+        },
+        amazon_src() {
+            return this.amazon;
         },
     },
 };

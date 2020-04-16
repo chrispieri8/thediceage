@@ -18,7 +18,7 @@
         </div>
 
         <!-- <div class="stats-row"> -->
-            <BlogStats :rating="blogPost.rating" class="stats-row" />
+            <BlogStats time="test" :rating="blogPost.rating" :amazon="blogPost.amazon" class="stats-row" />
         <!-- </div> -->
 
         <div class="content-row">
@@ -30,7 +30,7 @@
 
             </div>
             <div class="stats-column">
-                <BlogStats :rating="blogPost.rating" />
+                <BlogStats :rating="blogPost.rating" :amazon="blogPost.amazon" />
             </div>
         </div>
 
