@@ -1,13 +1,13 @@
 <template>
 
     <div class="main">
-        <div>
+        <div class="title">
             <h1>{{blogPost.name}}</h1>
         </div>
 
-        <p class="intro">
+        <!-- <p class="intro">
             {{blogPost.description}}
-        </p>
+        </p> -->
 
         <div class="iframe-container" v-if="blogPost.youtubeURL && blogPost.youtubeURL.length">
             <div class="skeleton"></div>
@@ -17,9 +17,7 @@
             allowfullscreen></iframe>
         </div>
 
-        <!-- <div class="stats-row"> -->
-            <BlogStats time="test" :rating="blogPost.rating" :amazon="blogPost.amazon" class="stats-row" />
-        <!-- </div> -->
+        <BlogStats class="stats-row" time="test" :rating="blogPost.rating" :amazon="blogPost.amazon" />
 
         <div class="content-row">
             <div class="description">
@@ -68,6 +66,11 @@ export default {
     position: relative;
 }
 
+.title {
+    text-align: center;
+    font-size: 1.5em;
+}
+
 .intro{
     font-style: italic;
 }
@@ -103,7 +106,9 @@ export default {
 
   .stats-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-flow: column wrap;
+      /* flex-wrap: wrap; */
+      max-height: 300px;
       justify-content: space-around;
   }
 }

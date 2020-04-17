@@ -2,7 +2,11 @@
   <div class="main">
 
     <div class="prefrences">
-      <input class="search" type="text" placeholder="e.g. Hero Realms" v-model="search">
+      <div class="search-container">
+        <img src="../assets/search-icon.svg" alt="search-icon">
+        <input class="search" type="text" placeholder="e.g. Hero Realms" v-model="search">
+
+      </div>
       <!-- <div class="search"></div> -->
       <div class="category-tags">
         <template v-for="(tag, index) in tags">
@@ -71,15 +75,29 @@ export default {
   padding: 0 20px;
 }
 
+.search-container {
+  position: relative;
+  width: 50%;
+  min-width: 250px;
+  margin: 0 auto;
+}
+
+.search-container img {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  height: 1.3em;
+  z-index: 4;
+}
+
 .search {
   position: relative;
   color: var(--grey-8);
-  padding: 8px 20px;
+  padding: 8px 55px;
   font-family: 'Raleway', sans-serif;
-  font-size: 1em;
-  width: 50%;
-  min-width: 250px;
   text-decoration: none;
+  width: 100%;
+  font-size: 1em;
   outline: none;
   transition: outline .2s ease-out;
 
@@ -92,6 +110,10 @@ export default {
   background-origin: border-box;
   background-clip: padding-box, border-box;
   background-size: 200% 200%;
+}
+
+.search::placeholder {
+  color: #A0AEC0;
 }
 
 .search:hover, .search:active, .search:focus {
