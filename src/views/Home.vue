@@ -7,7 +7,7 @@
         <input class="search" type="text" placeholder="e.g. Hero Realms" v-model="search">
 
       </div>
-      <!-- <div class="search"></div> -->
+
       <div class="category-tags">
         <template v-for="(tag, index) in tags">
           <CategoryTag :title='tag' v-on:tagSelected="tagSelected" :key="index" />
@@ -16,8 +16,8 @@
     </div>
 
     <transition-group name="list-complete" tag="p" class="posts-container">
-      <div class="posts" v-for="blogPost in blogPosts" :key="blogPost.name">
-        <BlogPostCard :game='blogPost' />
+      <div class="posts" v-for="blogPost in blogPosts" :key="blogPost.title">
+        <BlogPostCard :game='blogPost' class="post" />
       </div>
     </transition-group>
 
@@ -55,14 +55,14 @@ export default {
   computed: {
     blogPosts() {
       const { games } = this.$store.state;
-      if (!games[0].image) {
+      if (!games[0].id) {
         return games;
       }
       return this.$store.state.games.filter((game) => {
-        return game.name.toLowerCase().includes(this.search.toLowerCase());
+        return game.title.toLowerCase().includes(this.search.toLowerCase());
       }).filter((game) => {
         return this.selectedTags.length === 0
-          || game.tags.some((tag) => this.selectedTags.indexOf(tag) >= 0);
+          || game.my_tags.some((tag) => this.selectedTags.indexOf(tag) >= 0);
       });
     },
   },
@@ -78,7 +78,7 @@ export default {
 .search-container {
   position: relative;
   width: 50%;
-  min-width: 250px;
+  min-width: 300px;
   margin: 0 auto;
 }
 
@@ -117,7 +117,6 @@ export default {
 }
 
 .search:hover, .search:active, .search:focus {
-  /* outline: 7px solid rgba(169, 227, 125, .4); */
   animation: animatedGradient 2s alternate ease infinite;
 }
 
@@ -130,39 +129,31 @@ export default {
 .posts-container {
   display: flex;
   flex-wrap: wrap;
-  /* padding: 0 20px */
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .posts {
-  flex-basis: 50%;
   transition: all .4s ease-in-out;
-  /* min-width: 469px; */
-  /* flex-grow: 1; */
 }
 
-@media only screen and (min-width: 950px) {
+.post {
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .post:hover {
+      box-shadow: 0 25px 55px rgba(0,0,0,.2),
+                  0 16px 28px rgba(0,0,0,.24);
+      transform: scale(1.05);
+  }
+}
+
+@media only screen and (max-width: 600px) {
   .posts {
-    max-width: 520px;
+    width: 100%;
   }
 }
-
-@media only screen and (max-width: 950px) {
-  .posts {
-    flex-basis: 100%
-  }
-
-  .posts-container {
-    justify-content: center;
-  }
-}
-
-@media only screen and (max-width: 580px) {
-  .posts {
-    flex-basis: 100%
-  }
-}
-
 
 .prefrences {
   margin: 10px auto;
@@ -182,11 +173,12 @@ export default {
   display: inline-block;
   margin-right: 10px;
 }
-.list-complete-enter, .list-complete-leave-to
-/* .list-complete-leave-active below version 2.1.8 */ {
+
+.list-complete-enter, .list-complete-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
+
 .list-complete-leave-active {
   position: absolute;
 }

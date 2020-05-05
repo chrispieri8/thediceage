@@ -27,17 +27,12 @@ export default {
 </script>
 
 <style scoped>
-  /* .header, .main-content, .footer {
-    padding: 20px;
-  } */
 
   .header {
     grid-row: 1 2;
   }
 
   .main-content {
-    /* grid-column-start: 2; */
-    /* max-width: var(--max-page-width); */
     width: 100%;
     max-width: var(--max-page-width);
     margin-left: auto;
@@ -46,17 +41,13 @@ export default {
   }
 
   .footer {
-    /* grid-column-start : 2; */
     grid-row-start: 3;
   }
 
   .grid-layout {
     min-height: 100vh;
     display: grid;
-    /* grid-template-columns: 250px 1fr; */
     grid-template-rows: 70px auto 80px;
-    /* max-width: var(--max-page-width); */
-    /* margin: auto; */
 
   }
 </style>
@@ -64,13 +55,6 @@ export default {
 <style>
 
 :root {
-  --primary-color : #A9E37D;
-  --dark-primary-color: hsl(94, 65%, 55%);
-  --darker-primary-color: hsl(94, 65%, 47%);
-  /* --primary-color : #3f72af; */
-  --light-primary-color : #f9f7f7;
-  --grey-color : hsla(94, 3%, 69%, 1);
-  --blue : #2AC1E1;
 
   --primary-1: #F7FBF5;
   --primary-2: #D8F6D9;
@@ -106,7 +90,6 @@ export default {
   --grey-8: #2D3748;
   --grey-9: #1A202C;
 
-  /* --secondary-color : #2c3e50; */
   --max-page-width : 1080px;
 }
 
@@ -145,9 +128,7 @@ html {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: var(--grey-9);
-  /* background-color: var(--light-primary-color); */
   position: relative;
 }
 

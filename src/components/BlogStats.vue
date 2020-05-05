@@ -3,31 +3,27 @@
         <div class="stat-row">
             <img class="stat-icon" alt="Rating" src="@/assets/trophy.svg" >
             <div class="stat-info">
-                {{stats}}
-                <span class="stat-unit">/10</span>
+                {{rating}}
             </div>
         </div>
         <div class="stat-row">
             <img class="stat-icon" alt="Timer" src="@/assets/timer.svg" >
             <div class="stat-info">
-                25 <span class="stat-unit">-</span> 30
-                <span class="stat-unit">mins</span>
+                {{time[0]}}
             </div>
         </div>
         <div class="stat-row">
             <img class="stat-icon" alt="People" src="@/assets/meeple.svg" >
-            <div class="stat-info">3 <span class="stat-unit">-</span> 4 <span class="stat-unit">players</span> </div>
+            <div class="stat-info">
+                {{players[0]}}
+                <span v-if="players[1]">+</span>
+            </div>
         </div>
 
-        <!-- <div class="stat-row">
-            <img class="stat-icon" alt="Coin" src="@/assets/coin.svg" >
-            <div class="stat-info">$19.99</div>
-        </div> -->
-
-        <iframe
+        <!-- <iframe
             style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
             :src="amazon_src">
-        </iframe>
+        </iframe> -->
     </div>
 
 </template>
@@ -35,13 +31,13 @@
 <script>
 export default {
     name: 'BlogStats',
-    props: ['rating', 'amazon'],
+    props: ['rating', 'amazon', 'time', 'players'],
     computed: {
-        stats() {
-            return this.rating;
-        },
         amazon_src() {
             return this.amazon;
+        },
+        my_stats() {
+            return this.stats;
         },
     },
 };
@@ -55,24 +51,12 @@ export default {
 }
 
 .stat-icon {
-    width: 71px;
-    height: 77px;
-}
-
-@media only screen and (max-width: 650px) {
-    .stat-icon {
-        /*  */
-    }
-
+    height: 60px;
 }
 
 .stat-info {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1.5em;
     margin-left: 10px;
 }
 
-.stat-unit {
-    font-size : 12px;
-}
 </style>

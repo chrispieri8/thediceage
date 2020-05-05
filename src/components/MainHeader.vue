@@ -26,19 +26,13 @@ export default {
 .main {
     max-width: var(--max-page-width);
     padding: 0 20px;
-    /* min-width: 350px; */
     max-height: 100px;
-    /* padding: 10px; */
-    /* margin: auto; */
     margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-/* .row {
-} */
 
 .logo {
     display: block;

@@ -8,9 +8,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     games: [
-      { name: '1', description: '1' },
-      { name: '2', description: '2' },
-      { name: '3', description: '3' },
+      { title: '1', html: '1' },
+      { title: '2', html: '2' },
+      { title: '3', html: '3' },
     ],
   },
   mutations: {
@@ -22,7 +22,22 @@ export default new Vuex.Store({
     async getGames({ commit }) {
       try {
         const result = await axios.get('/api/game/getGames');
-        commit('updateGames', result.data);
+        const mappedResult = result.data.map((game) => {
+          const stats = JSON.parse(game.meta_description);
+          Object.defineProperty(game, 'stats', {
+            value: stats,
+            writable: true,
+          });
+          const tags = game.tags.map((tag) => {
+            return tag.name;
+          });
+          Object.defineProperty(game, 'my_tags', {
+            value: tags,
+            writable: true,
+          });
+          return game;
+        });
+        commit('updateGames', mappedResult);
       } catch (error) {
         console.error('Failed retrieving games', error);
       }
