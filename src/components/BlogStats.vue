@@ -7,13 +7,13 @@
             </div>
         </div>
         <div class="stat-row">
-            <img class="stat-icon" alt="Timer" src="@/assets/timer.svg" >
+            <img class="stat-icon" alt="game length in minutes" src="@/assets/timer.svg" >
             <div class="stat-info">
                 {{time[0]}}
             </div>
         </div>
         <div class="stat-row">
-            <img class="stat-icon" alt="People" src="@/assets/meeple.svg" >
+            <img class="stat-icon" alt="number of players" src="@/assets/meeple.svg" >
             <div class="stat-info">
                 {{players[0]}}
                 <span v-if="players[1]">+</span>

@@ -3,9 +3,9 @@
 
     <main-header class="header" />
 
-    <div class="main-content">
+    <main class="main-content">
       <router-view/>
-    </div>
+    </main>
 
     <main-footer class="footer"></main-footer>
 
@@ -27,6 +27,37 @@ export default {
 </script>
 
 <style scoped>
+
+  /* raleway-regular - latin */
+  @font-face {
+    font-display: swap;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Raleway'), local('Raleway-Regular'),
+        url('./assets/raleway-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('./assets/raleway-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* raleway-italic - latin */
+  @font-face {
+    font-display: swap;
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Raleway Italic'), local('Raleway-Italic'),
+        url('./assets/raleway-v14-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('./assets/raleway-v14-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* raleway-700 - latin */
+  @font-face {
+    font-display: swap;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Raleway Bold'), local('Raleway-Bold'),
+        url('./assets/raleway-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('./assets/raleway-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
 
   .header {
     grid-row: 1 2;
@@ -130,6 +161,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: var(--grey-9);
   position: relative;
+}
+
+/* Remove Some Default button behavior */
+button {
+  border-style: none;
+  border: none;
+  font-family: 'Raleway', sans-serif;
 }
 
 .background {

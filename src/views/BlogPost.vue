@@ -34,6 +34,56 @@ export default {
             const result = this.$store.state.games.find((game) => game.title === this.title);
             return result || {};
         },
+        jsonLD() {
+            if (!this.blogPost.authors) {
+                return null;
+            }
+            return {
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                mainEntityOfPage: {
+                    '@type': 'WebPage',
+                    '@id': this.blogPost.url,
+                },
+                headline: this.blogPost.title,
+                image: [
+                    this.blogPost.feature_image,
+                ],
+                datePublished: this.blogPost.published_at,
+                dateModified: this.blogPost.updated_at,
+                author: {
+                    '@type': 'Person',
+                    name: this.blogPost.authors[0].name,
+                },
+                publisher: {
+                    '@type': 'Organization',
+                    name: 'The Dice Age',
+                    logo: {
+                        '@type': 'ImageObject',
+                        url: 'https://thediceage.com/logo_w_title.png',
+                    },
+                },
+            };
+        },
+    },
+    metaInfo() {
+        return {
+            title: this.blogPost.title,
+            htmlAttrs: {
+                lang: 'en',
+                amp: true,
+            },
+            meta: [
+                {
+                    name: 'description',
+                    content: this.blogPost.excerpt,
+                },
+            ],
+            script: [{
+                type: 'application/ld+json',
+                json: this.jsonLD,
+            }],
+        };
     },
 };
 </script>

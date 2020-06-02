@@ -1,12 +1,12 @@
 <template>
-  <div class="social-media">
+  <footer class="social-media">
     <a href="https://www.youtube.com/channel/UCqMkwvDnT-nNHjrVoSBgW9Q/" target="_blank">
-      <img class="youtube" src="../assets/youtube2.png" alt="YouTube">
+      <img class="youtube" src="../assets/youtube.png" alt="The Dice Age YouTube">
     </a>
-    <a href="https://www.instagram.com/the_dice_age/">
-      <img class="instagram" src="../assets/instagram.png" alt="Instagram" target="_blank">
+    <a href="https://www.instagram.com/the_dice_age/" target="_blank">
+      <img class="instagram" src="../assets/instagram.png" alt="The Dice Age Instagram" >
     </a>
-  </div>
+  </footer>
 </template>
 
 <script>

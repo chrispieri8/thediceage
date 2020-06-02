@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import BlogPost from '../views/BlogPost.vue';
-import PageNotFound from '../views/PageNotFound.vue';
+// import PageNotFound from '../views/PageNotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -29,7 +29,10 @@ const routes = [
     //     const isValidId = Number.isInteger(Number(to.params.id));
     //     next(isValidId);
   },
-  { path: '*', component: PageNotFound },
+  {
+    path: '*',
+    component: () => import('../views/PageNotFound.vue'),
+  },
 ];
 
 const router = new VueRouter({

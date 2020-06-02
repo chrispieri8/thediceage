@@ -1,25 +1,33 @@
 <template>
   <div class="main">
 
-    <div class="prefrences">
-      <div class="search-container">
-        <img src="../assets/search-icon.svg" alt="search-icon">
-        <input class="search" type="text" placeholder="e.g. Hero Realms" v-model="search">
+    <section class="prefrences">
 
-      </div>
+      <section class="search-container">
+        <img src="../assets/search-icon.svg" alt="">
+        <input
+          class="search" type="text" placeholder="e.g. Hero Realms"
+          v-model="search" aria-label="search board games"
+          accesskey="s">
+      </section>
 
-      <div class="category-tags">
-        <template v-for="(tag, index) in tags">
-          <CategoryTag :title='tag' v-on:tagSelected="tagSelected" :key="index" />
-        </template>
-      </div>
-    </div>
+      <section>
+        <ul class="category-tags">
+          <template v-for="(tag, index) in tags">
+            <CategoryTag :title='tag' v-on:tagSelected="tagSelected" :key="index" />
+          </template>
+        </ul>
+      </section>
 
-    <transition-group name="list-complete" tag="p" class="posts-container">
-      <div class="posts" v-for="blogPost in blogPosts" :key="blogPost.title">
-        <BlogPostCard :game='blogPost' class="post" />
-      </div>
-    </transition-group>
+    </section>
+
+    <section>
+      <transition-group name="list-complete" tag="ul" class="posts-container">
+        <li class="posts" v-for="blogPost in blogPosts" :key="blogPost.title">
+          <BlogPostCard tabindex="0" :game='blogPost' class="post" />
+        </li>
+      </transition-group>
+    </section>
 
   </div>
 </template>
@@ -66,6 +74,14 @@ export default {
       });
     },
   },
+  metaInfo() {
+        return {
+            title: 'The Dice Age',
+            meta: [
+              { name: 'description', content: '☝️☝️☝️ Click Me! ☝️☝️☝️☝️ Come On ☝️☝️☝️☝️ CLICK Me!! ☝️☝️☝️☝️ Board Games! ☝️☝️☝️☝️ Do IT!!! ☝️☝️☝️☝️ I am HERE! ☝️☝️☝️☝️ Click ME!! ☝️☝️☝️☝️ Click Me NOW!! ☝️☝️☝️☝️' },
+            ],
+        };
+    },
 };
 </script>
 
@@ -130,6 +146,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-left: 0;
 }
 
 .posts {
@@ -141,12 +158,23 @@ export default {
     transition: all .2s ease-in-out;
 }
 
+li {
+  list-style: none;
+}
+
 @media (hover: hover) {
   .post:hover {
       box-shadow: 0 25px 55px rgba(0,0,0,.2),
                   0 16px 28px rgba(0,0,0,.24);
       transform: scale(1.05);
   }
+}
+
+.post:focus {
+  outline: none;
+  box-shadow: 0 25px 55px rgba(0,0,0,.2),
+                  0 16px 28px rgba(0,0,0,.24);
+  transform: scale(1.05);
 }
 
 @media only screen and (max-width: 600px) {

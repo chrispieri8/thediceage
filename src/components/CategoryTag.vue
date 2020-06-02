@@ -1,12 +1,14 @@
 <template>
-  <a class="container"
-    tabindex="0"
-    :class="{'is-Selected' : selected}"
-    v-on:keyup.enter="select()"
-    @mousedown="mouseDown($event)"
-    @click="select()">
-      {{title}}
-  </a>
+    <li>
+    <button class="container"
+        role="checkbox"
+        :aria-checked="selected"
+        :class="{'is-Selected' : selected}"
+        @click="select()">
+        {{title}}
+    </button>
+
+    </li>
 </template>
 
 <script>
@@ -38,11 +40,16 @@ export default {
 </script>
 
 <style scoped>
+
+li {
+    list-style: none;
+}
+
 .container {
     display: flex;
     align-items: center;
     margin: 5px;
-    padding: 7px 10px;
+    padding: 9px 12px;
     border-radius: 8px;
     cursor: pointer;
     display: inline-block;

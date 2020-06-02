@@ -1,23 +1,23 @@
 <template>
-  <div class="container" @click="goToPost()">
+  <article class="container" @click="goToPost()">
     <template v-if="game.id">
     <div class="game-content"></div>
-    <div class="game-image" v-bind:style="{ backgroundImage: 'url(' + game.feature_image + ')' }" alt="Game"></div>
-    <div class="game-title">{{game.title}}</div>
+    <div class="game-image" v-bind:style="{ backgroundImage: 'url(' + game.feature_image + ')' }" ></div>
+    <div class="game-title"><a href="">{{game.title}}</a></div>
     <div class="game-stats">
         <div>
-            <img class="stat-icon" src="../assets/calendar-alt-regular.svg">
+            <img class="stat-icon" src="../assets/calendar-alt-regular.svg" alt="publish date">
             {{publishDate}}
         </div>
         <div>
-            <img class="stat-icon" src="../assets/clock-regular.svg">
+            <img class="stat-icon" src="../assets/clock-regular.svg" alt="game length in minutes">
             {{game.stats.time[0]}}
             <span v-if="game.stats.time[1]">
                 - {{game.stats.time[1]}}
             </span>
         </div>
         <div>
-            <img class="stat-icon" src="../assets/user-friends-solid.svg">
+            <img class="stat-icon" src="../assets/user-friends-solid.svg" alt="number of players">
             {{game.stats.players[0]}}
             <span v-if="game.stats.players[1]">
                 - {{game.stats.players[1]}}
@@ -25,15 +25,15 @@
         </div>
     </div>
     <div class="game-rating">
-        {{game.stats.rating}}
-        <span class="out-of-10">/10</span>
+        <span> {{game.stats.rating}} </span>
+        <span class="out-of-10" aria-label="out of 10">/10</span>
     </div>
     <div class="game-tags">
         {{game.my_tags.join(' + ')}}
     </div>
 
     </template>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -87,6 +87,11 @@ export default {
         margin-top: 20px;
         margin-bottom: 10px;
         line-height: 30px;
+    }
+
+    .game-title a {
+        text-decoration: none;
+        color: var(--grey-9);
     }
 
     .game-content {
@@ -159,6 +164,7 @@ export default {
         border-radius: 0;
         min-height: 0;
         margin-bottom: 2%;
+        background: radial-gradient(at center, white, transparent);
     }
 
     .game-image {
